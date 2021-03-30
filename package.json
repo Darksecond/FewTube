@@ -1,0 +1,25 @@
+{
+  "name": "ytjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
+    "express-request-proxy": "^2.2.2",
+    "http-proxy": "^1.18.1",
+    "knex": "^0.95.4",
+    "mustache": "^4.1.0",
+    "node-fetch": "^2.6.1",
+    "rss-parser": "^3.12.0",
+    "sqlite3": "^5.0.2",
+    "xmlbuilder": "^11.0.1",
+    "ytdl-core": "^4.5.0",
+    "ytpl": "^2.0.5"
+  }
+}

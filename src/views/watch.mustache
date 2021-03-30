@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+
+  <title>{{title}} - YTJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/shaka-player/3.0.10/shaka-player.compiled.js"></script>
+  <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+  <style>
+    #video {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+    }
+
+    .navigation {
+      display: block;
+      height: 5.2rem;
+      line-height: 5.2rem;
+      font-size: 1.6rem;
+    }
+
+    .related-video {
+      margin-bottom: 1rem;
+    }
+
+    /* Plyr fix for milligram */
+    .video-container button {
+      margin-bottom: 0;
+      height: auto;
+    }
+  </style>
+
+  <script>
+    async function init() {
+      const source = "/api/dash/{{id}}.mpd";
+      const video = document.querySelector('#video');
+      let options = {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'pip', 'fullscreen'],
+        settings: ['quality', 'loop'],
+      };
+      const player = new Plyr(video, options);
+      window.player = player;
+
+      if (shaka.Player.isBrowserSupported()) {
+        shaka.polyfill.installAll();
+        const shakaInstance = new shaka.Player(video);
+        window.shaka = shakaInstance;
+        shakaInstance.configure({
+          streaming: {
+            useNativeHlsOnSafari: false,
+          },
+        });
+
+		    shakaInstance.load(source);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</head>
+
+<body>
+
+  <nav class="navigation">
+    <section class="container">
+      YTJS
+    </section>
+  </nav>
+
+  <section class="container">
+    <div class="video-container">
+      <video playsinline id="video" poster="{{poster}}"></video>
+    </div>
+    <hr />
+    <h3>{{title}}</h3>
+    <h4><a href="{{channel.url}}">{{channel.name}}</a></h4>
+    <div class="row">
+      <div class="column column-66">
+        <p>{{{description}}}</p>
+      </div>
+      <div class="column column-33">
+        {{#related}}
+        <div class="related-video">
+          <div class="title"><a href="/watch/{{id}}">{{title}}</a></div>
+
+        </div>
+        {{/related}}
+      </div>
+    </div>
+    
+  </section>
+
+
+</body>
+
+</html>
