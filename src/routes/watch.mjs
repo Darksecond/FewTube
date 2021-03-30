@@ -6,18 +6,22 @@ import httpProxy from "http-proxy";
 let proxy = httpProxy.createProxyServer({});
 
 Router.get('/watch/:id', async (req, res) => {
-  let info = await ytdl.getBasicInfo(`https://www.youtube.com/watch?v=${req.params.id}`); //TODO cache info 
-  res.render('watch', {
-    id: req.params.id,
-    title: info.videoDetails.title,
-    description: info.videoDetails.description.replace(new RegExp('\r?\n', 'g'), '<br />'),
-    channel: {
-      name: info.videoDetails.author.name,
-      url: `/channel/${info.videoDetails.author.id}`,
-    },
-    poster: info.videoDetails.thumbnails.sort((a,b) => b.width-a.width)[0].url, //TODO cleanup
-    related: info.related_videos,
-  });
+  try {
+    let info = await ytdl.getBasicInfo(`https://www.youtube.com/watch?v=${req.params.id}`); //TODO cache info 
+    res.render('watch', {
+      id: req.params.id,
+      title: info.videoDetails.title,
+      description: info.videoDetails.description.replace(new RegExp('\r?\n', 'g'), '<br />'),
+      channel: {
+        name: info.videoDetails.author.name,
+        url: `/channel/${info.videoDetails.author.id}`,
+      },
+      poster: info.videoDetails.thumbnails.sort((a,b) => b.width-a.width)[0].url, //TODO cleanup
+      related: info.related_videos,
+    });
+  } catch {
+    res.status(404).send("Not Found");
+  }
 });
 
 Router.get('/test/:id', async (req, res) => {
