@@ -2,6 +2,10 @@ import express from "express";
 import fs from "fs";
 import Mustache from "mustache";
 import path from "path";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const Router = express();
 
@@ -17,4 +21,4 @@ Router.engine('mustache', function(filePath, options, callback) {
 
 Router.use(express.static('assets'));
 Router.set('view engine', 'mustache');
-Router.set('views', path.resolve('src', 'views')) // specify the views directory
+Router.set('views', path.resolve(__dirname, 'views')) // specify the views directory
