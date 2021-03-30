@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
 
-  <title>{{info.author.name}} - YTJS</title>
+  <title>YTJS</title>
   <script src="https://ajax.googleapis.com/ajax/libs/shaka-player/3.0.10/shaka-player.compiled.js"></script>
   <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
   <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
@@ -41,12 +41,6 @@
     .list-video {
       margin-bottom: 1rem;
     }
-
-    .title img {
-      height: 1.2em;
-      border-radius: 100%;
-      vertical-align: bottom;
-    }
   </style>
 </head>
 
@@ -59,20 +53,28 @@
   </nav>
 
   <section class="container">
-    <h1 class="title"><img src="{{info.author.bestAvatar.url}}" /> <span>{{info.author.name}}</span></h1>
-{{#isSubscribed}}
-<a href="/unsubscribe/{{info.author.channelID}}">Unsubscribe</a>
-{{/isSubscribed}}
-{{^isSubscribed}}
-<a href="/subscribe/{{info.author.channelID}}">Subscribe</a>
-{{/isSubscribed}}
+
     <hr />
     
-    {{#info.items}}
-    <div class="list-video">
-      <a href="/watch/{{id}}">{{title}}</a>
+    <div class="row">
+      <div class="column column-66">
+        {{#feed}}
+        <div class="list-video">
+          <a href="/watch/{{id}}">{{title}}</a>
+        </div>
+        {{/feed}}
+      </div>
+
+      <div class="column column-33">
+        <h4>SUBSCRIPTIONS</h4>
+        {{#subscriptions}}
+        <div class="list-video">
+          <a href="/channel/{{id}}">{{title}}</a>
+        </div>
+        {{/subscriptions}}
+      </div>
     </div>
-    {{/info.items}}
+    
   </section>
 
 
