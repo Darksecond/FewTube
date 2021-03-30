@@ -4,7 +4,7 @@ import { Database } from "../database.mjs";
 
 let parser = new Parser();
 
-const SCRAPE_INTERVAL_MS = 5 * 60 * 1000; // Every 5 minutes
+const SCRAPE_INTERVAL_MS = 15 * 60 * 1000; // Every 15 minutes
 
 async function job() {
 
