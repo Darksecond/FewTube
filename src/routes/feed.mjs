@@ -9,6 +9,10 @@ Router.get('/', async (req, res) => {
 Router.get('/feed', async (req, res) => {
   let subscriptions = await Database('subscriptions').orderBy('title');
   let feed = await Database('feed').orderBy('published', 'desc').limit(1000);
+  for(let item of feed) {
+    item.channel = subscriptions.find(c => c.id == item.channel) || item.channel;
+  }
+
   res.render('feed', {
     feed,
     subscriptions,

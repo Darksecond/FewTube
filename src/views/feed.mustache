@@ -41,6 +41,10 @@
     .list-video {
       margin-bottom: 1rem;
     }
+
+    .list-video .channel {
+      color: #440079;
+    }
   </style>
 </head>
 
@@ -60,7 +64,7 @@
       <div class="column column-66">
         {{#feed}}
         <div class="list-video">
-          <a href="/watch/{{id}}">{{title}}</a>
+          <a href="/watch/{{id}}">{{title}}</a> <a href="/channel/{{channel.id}}" class="channel">{{channel.title}}</a>
         </div>
         {{/feed}}
       </div>
