@@ -8,10 +8,10 @@ async function init() {
   const player = new Plyr(video, options);
   window.player = player;
 
-  if (shaka.Player.isBrowserSupported()) {
+  // if (shaka.Player.isBrowserSupported()) {
     shaka.polyfill.installAll();
     const shakaInstance = new shaka.Player(video);
-    window.shaka = shakaInstance;
+    window.shakaInstance = shakaInstance;
     shakaInstance.configure({
       streaming: {
         useNativeHlsOnSafari: false,
@@ -19,9 +19,11 @@ async function init() {
     });
 
     shakaInstance.load(source);
+
+    
     
     setInterval(()=>{player.speed=1}, 1000); // Reset speed every 1 second(s), in case it (somehow) gets screwed up
-  }
+  // }
 }
 
 document.addEventListener('DOMContentLoaded', init);
