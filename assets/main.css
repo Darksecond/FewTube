@@ -1,0 +1,40 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+/* Plyr fix for milligram */
+.video-container button {
+  margin-bottom: 0;
+  height: auto;
+}
+
+.navigation {
+  display: block;
+  height: 5.2rem;
+  line-height: 5.2rem;
+  font-size: 1.6rem;
+}
+
+.related-video {
+  margin-bottom: 1rem;
+}
+
+.list-video {
+  margin-bottom: 1rem;
+}
+
+.list-video .channel {
+  color: #440079;
+}
+
+.title img {
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: bottom;
+}
