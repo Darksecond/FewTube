@@ -11,7 +11,7 @@ async function init() {
   if (shaka.Player.isBrowserSupported()) {
     shaka.polyfill.installAll();
     const shakaInstance = new shaka.Player(video);
-    window.shaka = shakaInstance;
+    window.shakaInstance = shakaInstance;
     shakaInstance.configure({
       streaming: {
         useNativeHlsOnSafari: false,
