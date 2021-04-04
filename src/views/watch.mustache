@@ -9,13 +9,12 @@
 
   <title>{{title}} - FEWTUBE</title>
 
-  <script src="/shaka-player.compiled-3.0.10.js"></script>
-  <script src="/plyr-3.6.4.js"></script>
+  <script src="/shaka-player.ui-3.0.10.js"></script>
   <script src="/player.js"></script>
   
   <link rel="stylesheet" href="/normalize.css">
   <link rel="stylesheet" href="/milligram.css">
-  <link rel="stylesheet" href="/plyr-3.6.4.css" />
+  <link rel="stylesheet" href="/controls-3.0.10.css">
   <link rel="stylesheet" href="/main.css" />
 </head>
 
@@ -28,8 +27,8 @@
   </nav>
 
   <section class="container">
-    <div class="video-container">
-      <video playsinline id="video" poster="{{poster}}"></video>
+    <div data-shaka-player-container class="video-container">
+      <video data-shaka-player playsinline id="video" poster="{{poster}}" src="/api/dash/{{id}}.mpd"></video>
     </div>
     <hr />
     <h3>{{title}}</h3>
@@ -42,7 +41,7 @@
         <h4>RELATED</h4>
         {{#related}}
         <div class="related-video">
-          <div class="title"><a href="/watch/{{id}}">{{title}}</a></div>
+          <div class="title"><a href="/watch/{{id}}">{{title}}</a> <a href="/channel/{{author.id}}" class="channel">{{author.name}}</a></div>
 
         </div>
         {{/related}}

@@ -6,6 +6,11 @@
   * Licensed under the MIT license
  */
 
+ :root {
+   --primary-color: #9b4dca;
+   --body-color: #606c76;
+ }
+
  *,
  *:after,
  *:before {
@@ -18,7 +23,7 @@
  }
  
  body {
-   color: #606c76;
+   color: var(--body-color);
    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
    font-size: 1.6em;
    font-weight: 300;
@@ -38,12 +43,12 @@
  }
  
  .button,
- button,
+ button.milligram,
  input[type='button'],
  input[type='reset'],
  input[type='submit'] {
-   background-color: #9b4dca;
-   border: 0.1rem solid #9b4dca;
+   background-color: var(--primary-color);
+   border: 0.1rem solid var(--primary-color);
    border-radius: .4rem;
    color: #fff;
    cursor: pointer;
@@ -61,22 +66,22 @@
  }
  
  .button:focus, .button:hover,
- button:focus,
- button:hover,
+ button.milligram:focus,
+ button.milligram:hover,
  input[type='button']:focus,
  input[type='button']:hover,
  input[type='reset']:focus,
  input[type='reset']:hover,
  input[type='submit']:focus,
  input[type='submit']:hover {
-   background-color: #606c76;
-   border-color: #606c76;
+   background-color: var(--body-color);
+   border-color: var(--body-color);
    color: #fff;
    outline: 0;
  }
  
  .button[disabled],
- button[disabled],
+ button.milligram[disabled],
  input[type='button'][disabled],
  input[type='reset'][disabled],
  input[type='submit'][disabled] {
@@ -85,16 +90,16 @@
  }
  
  .button[disabled]:focus, .button[disabled]:hover,
- button[disabled]:focus,
- button[disabled]:hover,
+ button.milligram[disabled]:focus,
+ button.milligram[disabled]:hover,
  input[type='button'][disabled]:focus,
  input[type='button'][disabled]:hover,
  input[type='reset'][disabled]:focus,
  input[type='reset'][disabled]:hover,
  input[type='submit'][disabled]:focus,
  input[type='submit'][disabled]:hover {
-   background-color: #9b4dca;
-   border-color: #9b4dca;
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
  }
  
  .button.button-outline,
@@ -103,7 +108,7 @@
  input[type='reset'].button-outline,
  input[type='submit'].button-outline {
    background-color: transparent;
-   color: #9b4dca;
+   color: var(--primary-color);
  }
  
  .button.button-outline:focus, .button.button-outline:hover,
@@ -116,8 +121,8 @@
  input[type='submit'].button-outline:focus,
  input[type='submit'].button-outline:hover {
    background-color: transparent;
-   border-color: #606c76;
-   color: #606c76;
+   border-color: var(--body-color);
+   color: var(--body-color);
  }
  
  .button.button-outline[disabled]:focus, .button.button-outline[disabled]:hover,
@@ -130,7 +135,7 @@
  input[type='submit'].button-outline[disabled]:focus,
  input[type='submit'].button-outline[disabled]:hover {
    border-color: inherit;
-   color: #9b4dca;
+   color: var(--primary-color);
  }
  
  .button.button-clear,
@@ -140,7 +145,7 @@
  input[type='submit'].button-clear {
    background-color: transparent;
    border-color: transparent;
-   color: #9b4dca;
+   color: var(--primary-color);
  }
  
  .button.button-clear:focus, .button.button-clear:hover,
@@ -154,7 +159,7 @@
  input[type='submit'].button-clear:hover {
    background-color: transparent;
    border-color: transparent;
-   color: #606c76;
+   color: var(--body-color);
  }
  
  .button.button-clear[disabled]:focus, .button.button-clear[disabled]:hover,
@@ -166,7 +171,7 @@
  input[type='reset'].button-clear[disabled]:hover,
  input[type='submit'].button-clear[disabled]:focus,
  input[type='submit'].button-clear[disabled]:hover {
-   color: #9b4dca;
+   color: var(--primary-color);
  }
  
  code {
@@ -180,7 +185,7 @@
  
  pre {
    background: #f4f5f6;
-   border-left: 0.3rem solid #9b4dca;
+   border-left: 0.3rem solid var(--primary-color);
    overflow-y: hidden;
  }
  
@@ -240,7 +245,7 @@
  input:not([type]):focus,
  textarea:focus,
  select:focus {
-   border-color: #9b4dca;
+   border-color: var(--primary-color);
    outline: 0;
  }
  
@@ -262,7 +267,7 @@
    min-height: 6.5rem;
  }
  
- label,
+ label.milligram,
  legend {
    display: block;
    font-size: 1.6rem;
@@ -465,12 +470,12 @@
  }
  
  a {
-   color: #9b4dca;
+   color: var(--primary-color);
    text-decoration: none;
  }
  
  a:focus, a:hover {
-   color: #606c76;
+   color: var(--body-color);
  }
  
  dl,
