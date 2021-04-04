@@ -19,6 +19,6 @@ Router.engine('mustache', function(filePath, options, callback) {
   });
 });
 
-Router.use(express.static('assets'));
+Router.use(express.static(path.resolve(__dirname, '..', 'assets')));
 Router.set('view engine', 'mustache');
 Router.set('views', path.resolve(__dirname, 'views')) // specify the views directory
